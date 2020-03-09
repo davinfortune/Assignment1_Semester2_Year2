@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".homeScreen">
+        <activity android:name=".artists.artistScreen"></activity>
+        <activity android:name="org.wit.festivalapp.home.homeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

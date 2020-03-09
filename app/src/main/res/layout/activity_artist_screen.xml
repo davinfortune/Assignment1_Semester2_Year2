@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C3E4F3"
-    tools:context=".home.homeScreen">
+    tools:context=".artists.artistScreen">
 
     <ImageView
         android:id="@+id/imageView5"
@@ -15,33 +15,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/unnamed" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="450dp"
-        android:layout_height="245dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginBottom="50dp"
-        android:rotation="100"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:srcCompat="@mipmap/unnamed" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="600dp"
-        android:layout_height="338dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginEnd="45dp"
-        android:rotation="275"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@mipmap/unnamed" />
 
     <android.support.v7.widget.Toolbar
@@ -117,4 +90,11 @@
         app:layout_constraintStart_toEndOf="@+id/timetableButton"
         app:srcCompat="@mipmap/artisticon" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="artistScreen"
+        tools:layout_editor_absoluteX="167dp"
+        tools:layout_editor_absoluteY="371dp" />
 </android.support.constraint.ConstraintLayout>
