@@ -1,24 +1,24 @@
-package org.wit.festivalapp.artists
+package org.wit.festivalapp.location
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import org.wit.festivalapp.R
+import org.wit.festivalapp.artists.artistScreen
 import org.wit.festivalapp.image.imageScreen
-import org.wit.festivalapp.location.locationScreen
 import org.wit.festivalapp.timetable.timetableScreen
 
-class artistScreen : AppCompatActivity() {
+class locationScreen : AppCompatActivity() {
 
-    lateinit var imageButton : ImageView
+    lateinit var artistButton: ImageView
     lateinit var timetableButton : ImageView
-    lateinit var locationButton : ImageView
+    lateinit var imageButton : ImageView
     lateinit var homeButton : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_artist_screen)
+        setContentView(R.layout.activity_location_screen)
 
         /*Home Button*/
         homeButton = findViewById(R.id.homeButton)
@@ -34,12 +34,12 @@ class artistScreen : AppCompatActivity() {
             startActivity(timetableIntent)
         }
 
-        /*Location Button*/
-        locationButton = findViewById(R.id.locationButton)
-        locationButton.setOnClickListener {
+        /*Artist Button*/
+        artistButton = findViewById(R.id.artistButton)
+        artistButton.setOnClickListener {
             finish()
-            val locationIntent : Intent = Intent(applicationContext, locationScreen::class.java)
-            startActivity(locationIntent)
+            val artistIntent : Intent = Intent(applicationContext, artistScreen::class.java)
+            startActivity(artistIntent)
         }
 
         /*Image Button*/

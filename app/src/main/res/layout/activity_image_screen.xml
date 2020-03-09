@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C3E4F3"
-    tools:context=".artists.artistScreen">
+    tools:context=".image.imageScreen">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/homeToolbar"
@@ -94,7 +94,7 @@
         android:id="@+id/artistText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/artistTest"
+        android:text="@string/imageTest"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/homeToolbar"
         app:layout_constraintEnd_toEndOf="parent"

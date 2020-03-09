@@ -8,16 +8,6 @@
     tools:context=".home.homeScreen">
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="452dp"
-        android:layout_height="248dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/unnamed" />
-
-    <ImageView
         android:id="@+id/imageView6"
         android:layout_width="450dp"
         android:layout_height="245dp"
@@ -65,6 +55,16 @@
         app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/logo" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="452dp"
+        android:layout_height="248dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/unnamed" />
 
     <ImageView
         android:id="@+id/locationButton"

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Longitude</string>
+    <string name="artistTest">Artist Test</string>
+    <string name="timetableTest">Time Table Test</string>
+    <string name="imageTest">Image Test</string>
+    <string name="locationTest">Location Test</string>
 </resources>

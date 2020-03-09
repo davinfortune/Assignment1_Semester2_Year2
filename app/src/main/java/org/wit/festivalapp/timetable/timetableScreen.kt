@@ -1,37 +1,30 @@
-package org.wit.festivalapp.artists
+package org.wit.festivalapp.timetable
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import org.wit.festivalapp.R
+import org.wit.festivalapp.artists.artistScreen
 import org.wit.festivalapp.image.imageScreen
 import org.wit.festivalapp.location.locationScreen
-import org.wit.festivalapp.timetable.timetableScreen
 
-class artistScreen : AppCompatActivity() {
 
-    lateinit var imageButton : ImageView
-    lateinit var timetableButton : ImageView
-    lateinit var locationButton : ImageView
-    lateinit var homeButton : ImageView
+lateinit var artistButton: ImageView
+lateinit var imageButton : ImageView
+lateinit var locationButton : ImageView
+lateinit var homeButton : ImageView
+
+class timetableScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_artist_screen)
+        setContentView(R.layout.activity_timetable_screen)
 
         /*Home Button*/
         homeButton = findViewById(R.id.homeButton)
         homeButton.setOnClickListener {
             finish()
-        }
-
-        /*Timetable Button*/
-        timetableButton = findViewById(R.id.timetableButton)
-        timetableButton.setOnClickListener {
-            finish()
-            val timetableIntent : Intent = Intent(applicationContext, timetableScreen::class.java)
-            startActivity(timetableIntent)
         }
 
         /*Location Button*/
@@ -40,6 +33,14 @@ class artistScreen : AppCompatActivity() {
             finish()
             val locationIntent : Intent = Intent(applicationContext, locationScreen::class.java)
             startActivity(locationIntent)
+        }
+
+        /*Artist Button*/
+        artistButton = findViewById(R.id.artistButton)
+        artistButton.setOnClickListener {
+            finish()
+            val artistIntent : Intent = Intent(applicationContext, artistScreen::class.java)
+            startActivity(artistIntent)
         }
 
         /*Image Button*/
