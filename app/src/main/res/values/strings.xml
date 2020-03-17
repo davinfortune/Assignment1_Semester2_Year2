@@ -4,4 +4,7 @@
     <string name="timetableTest">Time Table Test</string>
     <string name="imageTest">Image Test</string>
     <string name="locationTest">Location Test</string>
+    <string name="location_button">location button</string>
+    <string name="we_are_music">We are Music.</string>
+    <string name="we_are_life">We are Life.</string>
 </resources>

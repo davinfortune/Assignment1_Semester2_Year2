@@ -1,11 +1,11 @@
 package org.wit.festivalapp.home
 
 import android.content.Intent
-import android.media.Image
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_main.*
 import org.wit.festivalapp.R
 import org.wit.festivalapp.artists.artistScreen
 import org.wit.festivalapp.image.imageScreen
@@ -27,11 +27,19 @@ class homeScreen : AppCompatActivity() {
     lateinit var timetableButton : ImageView
     lateinit var imageButton : ImageView
     lateinit var locationButton : ImageView
+    lateinit var logoImage : ImageView
+
+    lateinit var logoAnim : Animation
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //ANIMATION
+        logoImage = findViewById(R.id.logoTop)
+        logoAnim = AnimationUtils.loadAnimation(this,R.anim.logo_animation)
+        logoImage.setAnimation(logoAnim)
 
         /*Timetable Button*/
         timetableButton = findViewById(R.id.timetableButton)

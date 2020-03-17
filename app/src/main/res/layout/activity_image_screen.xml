@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoTop"
         android:layout_width="145dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
