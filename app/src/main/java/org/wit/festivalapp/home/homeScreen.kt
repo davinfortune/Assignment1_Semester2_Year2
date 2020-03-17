@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.TextView
 import org.wit.festivalapp.R
 import org.wit.festivalapp.artists.artistScreen
 import org.wit.festivalapp.image.imageScreen
@@ -22,13 +23,24 @@ https://www.youtube.com/watch?v=E4QBMxsIA5U
  **/
 
 class homeScreen : AppCompatActivity() {
-
+    //BUTTONS
     lateinit var artistButton: ImageView
     lateinit var timetableButton : ImageView
     lateinit var imageButton : ImageView
     lateinit var locationButton : ImageView
-    lateinit var logoImage : ImageView
 
+    //RIGHT ANIMATION
+    lateinit var firstImage : ImageView
+    lateinit var firstAnimation : Animation
+    lateinit var firstText : TextView
+
+    //LEFT ANIMATION
+    lateinit var secondImage : ImageView
+    lateinit var secondAnimation : Animation
+    lateinit var secondText : TextView
+
+    //LOGO
+    lateinit var logoImage : ImageView
     lateinit var logoAnim : Animation
 
 
@@ -37,9 +49,27 @@ class homeScreen : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //ANIMATION
-        logoImage = findViewById(R.id.logoTop)
+           //LOGO
+        logoImage = findViewById(R.id.homeButton)
         logoAnim = AnimationUtils.loadAnimation(this,R.anim.logo_animation)
         logoImage.setAnimation(logoAnim)
+
+          //TOP IMAGE AND TEXT
+        firstText = findViewById(R.id.musicText)
+        firstImage = findViewById(R.id.firstImage)
+        firstAnimation = AnimationUtils.loadAnimation(this,R.anim.first_image_animation)
+        firstImage.setAnimation(firstAnimation)
+        firstAnimation = AnimationUtils.loadAnimation(this,R.anim.first_text_animation)
+        firstText.setAnimation(firstAnimation)
+
+          //BOTTOM IMAGE AND TEXT
+        secondText = findViewById(R.id.lifeText)
+        secondImage = findViewById(R.id.secondImage)
+        secondAnimation = AnimationUtils.loadAnimation(this,R.anim.second_image_animation)
+        secondImage.setAnimation(secondAnimation)
+        secondAnimation = AnimationUtils.loadAnimation(this,R.anim.second_text_animation)
+        secondText.setAnimation(secondAnimation)
+
 
         /*Timetable Button*/
         timetableButton = findViewById(R.id.timetableButton)
