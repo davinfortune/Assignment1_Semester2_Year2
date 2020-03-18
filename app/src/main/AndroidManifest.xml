@@ -10,10 +10,11 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".location.locationScreen"></activity>
+        <activity android:name=".location.locationScreen"/>
         <activity android:name=".image.imageScreen" />
         <activity android:name=".timetable.timetableScreen" />
         <activity android:name=".artists.artistScreen" />
+        <activity android:name=".artists.artistDetails" />
         <activity android:name=".home.homeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

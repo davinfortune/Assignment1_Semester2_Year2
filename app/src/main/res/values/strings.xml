@@ -12,4 +12,8 @@
     <string name="moments">Moments</string>
     <string name="todo">TODO</string>
     <string name="artists">Artists</string>
+    <string name="_6_30">6:30.</string>
+    <string name="pop">Pop.</string>
+    <string name="main_stage">Main Stage.</string>
+    <string name="ariana_grande">Ariana Grande.</string>
 </resources>
