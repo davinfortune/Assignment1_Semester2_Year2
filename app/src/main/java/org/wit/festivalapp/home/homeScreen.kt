@@ -7,9 +7,11 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.wit.festivalapp.R
 import org.wit.festivalapp.artists.artistDetails
-import org.wit.festivalapp.artists.artistModel
+import org.wit.festivalapp.artists.ArtistModel
 import org.wit.festivalapp.artists.artistScreen
 import org.wit.festivalapp.image.imageScreen
 import org.wit.festivalapp.location.locationScreen
@@ -24,7 +26,7 @@ Tutorials Used :
 https://www.youtube.com/watch?v=E4QBMxsIA5U
  **/
 
-class homeScreen : AppCompatActivity() {
+class homeScreen : AppCompatActivity(), AnkoLogger {
     //BUTTONS
     lateinit var artistButton: ImageView
     lateinit var timetableButton : ImageView
@@ -46,7 +48,7 @@ class homeScreen : AppCompatActivity() {
     lateinit var logoAnim : Animation
 
     //ARTIST MODEL
-    var artists = artistModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,11 +110,6 @@ class homeScreen : AppCompatActivity() {
            val artistIntent : Intent = Intent(applicationContext, artistScreen::class.java)
             startActivity(artistIntent)
         }
-
-
-
-        //HOME CODE
-
     }
 
 

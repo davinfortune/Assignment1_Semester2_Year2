@@ -15,6 +15,7 @@
         <activity android:name=".timetable.timetableScreen" />
         <activity android:name=".artists.artistScreen" />
         <activity android:name=".artists.artistDetails" />
+        <activity android:name=".artists.ArtistModel" />
         <activity android:name=".home.homeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

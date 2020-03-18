@@ -16,4 +16,5 @@
     <string name="pop">Pop.</string>
     <string name="main_stage">Main Stage.</string>
     <string name="ariana_grande">Ariana Grande.</string>
+    <string name="hint_Artist_Name">ArtistName</string>
 </resources>
