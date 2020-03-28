@@ -1,28 +1,24 @@
-package org.wit.festivalapp.artists
+package org.wit.festivalapp.image
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import org.wit.festivalapp.R
-import org.wit.festivalapp.image.imageScreen
-import org.wit.festivalapp.location.locationScreen
+import org.wit.festivalapp.artists.ArtistScreen
+import org.wit.festivalapp.location.LocationScreen
 import org.wit.festivalapp.timetable.timetableScreen
 
-class artistScreen : AppCompatActivity() {
+class ImageScreen : AppCompatActivity() {
 
-    lateinit var artistsArray : ArrayList<ArtistModel>
-    var addArtistButton : Button = findViewById(R.id.addArtistButton)
-
-    lateinit var imageButton : ImageView
+    lateinit var artistButton: ImageView
     lateinit var timetableButton : ImageView
     lateinit var locationButton : ImageView
     lateinit var homeButton : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_artist_screen)
+        setContentView(R.layout.activity_image_screen)
 
         /*Home Button*/
         homeButton = findViewById(R.id.homeButton)
@@ -42,22 +38,16 @@ class artistScreen : AppCompatActivity() {
         locationButton = findViewById(R.id.locationButton)
         locationButton.setOnClickListener {
             finish()
-            val locationIntent : Intent = Intent(applicationContext, locationScreen::class.java)
+            val locationIntent : Intent = Intent(applicationContext, LocationScreen::class.java)
             startActivity(locationIntent)
         }
 
-        /*Image Button*/
-        imageButton = findViewById(R.id.imageButton)
-        imageButton.setOnClickListener{
+        /*Artist Button*/
+        artistButton = findViewById(R.id.artistButton)
+        artistButton.setOnClickListener {
             finish()
-            val imageIntent : Intent = Intent(applicationContext, imageScreen::class.java)
-            startActivity(imageIntent)
-        }
-
-
-        //ARTIST CODE
-        addArtistButton.setOnClickListener{
-            setContentView(R.layout.activity_add_artist)
+            val artistIntent : Intent = Intent(applicationContext, ArtistScreen::class.java)
+            startActivity(artistIntent)
         }
     }
 }

@@ -8,13 +8,11 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import org.wit.festivalapp.R
-import org.wit.festivalapp.artists.artistDetails
-import org.wit.festivalapp.artists.ArtistModel
-import org.wit.festivalapp.artists.artistScreen
-import org.wit.festivalapp.image.imageScreen
-import org.wit.festivalapp.location.locationScreen
+import org.wit.festivalapp.artists.ArtistDetails
+import org.wit.festivalapp.artists.ArtistScreen
+import org.wit.festivalapp.image.ImageScreen
+import org.wit.festivalapp.location.LocationScreen
 import org.wit.festivalapp.timetable.timetableScreen
 
 /**
@@ -26,7 +24,7 @@ Tutorials Used :
 https://www.youtube.com/watch?v=E4QBMxsIA5U
  **/
 
-class homeScreen : AppCompatActivity(), AnkoLogger {
+class HomeScreen : AppCompatActivity(), AnkoLogger {
     //BUTTONS
     lateinit var artistButton: ImageView
     lateinit var timetableButton : ImageView
@@ -69,7 +67,7 @@ class homeScreen : AppCompatActivity(), AnkoLogger {
         firstText.setAnimation(firstAnimation)
         // BUTTON
         firstImage.setOnClickListener{
-            val firstImageIntent : Intent = Intent(applicationContext, artistDetails::class.java)
+            val firstImageIntent : Intent = Intent(applicationContext, ArtistDetails::class.java)
             startActivity(firstImageIntent)
         }
 
@@ -92,7 +90,7 @@ class homeScreen : AppCompatActivity(), AnkoLogger {
         /*Image Button*/
         imageButton = findViewById(R.id.imageButton)
         imageButton.setOnClickListener{
-            val imageIntent : Intent = Intent(applicationContext, imageScreen::class.java)
+            val imageIntent : Intent = Intent(applicationContext, ImageScreen::class.java)
             startActivity(imageIntent)
         }
 
@@ -100,14 +98,14 @@ class homeScreen : AppCompatActivity(), AnkoLogger {
         /*Location Button*/
         locationButton = findViewById(R.id.locationButton)
         locationButton.setOnClickListener {
-            val locationIntent : Intent = Intent(applicationContext, locationScreen::class.java)
+            val locationIntent : Intent = Intent(applicationContext, LocationScreen::class.java)
             startActivity(locationIntent)
         }
 
         /*Artist Button*/
         artistButton = findViewById(R.id.artistButton)
         artistButton.setOnClickListener {
-           val artistIntent : Intent = Intent(applicationContext, artistScreen::class.java)
+           val artistIntent : Intent = Intent(applicationContext, ArtistScreen::class.java)
             startActivity(artistIntent)
         }
     }

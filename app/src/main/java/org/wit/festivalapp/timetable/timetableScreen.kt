@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import org.wit.festivalapp.R
-import org.wit.festivalapp.artists.artistScreen
-import org.wit.festivalapp.image.imageScreen
-import org.wit.festivalapp.location.locationScreen
+import org.wit.festivalapp.artists.ArtistScreen
+import org.wit.festivalapp.image.ImageScreen
+import org.wit.festivalapp.location.LocationScreen
 
 
 lateinit var artistButton: ImageView
@@ -31,7 +31,7 @@ class timetableScreen : AppCompatActivity() {
         locationButton = findViewById(R.id.locationButton)
         locationButton.setOnClickListener {
             finish()
-            val locationIntent : Intent = Intent(applicationContext, locationScreen::class.java)
+            val locationIntent : Intent = Intent(applicationContext, LocationScreen::class.java)
             startActivity(locationIntent)
         }
 
@@ -39,7 +39,7 @@ class timetableScreen : AppCompatActivity() {
         artistButton = findViewById(R.id.artistButton)
         artistButton.setOnClickListener {
             finish()
-            val artistIntent : Intent = Intent(applicationContext, artistScreen::class.java)
+            val artistIntent : Intent = Intent(applicationContext, ArtistScreen::class.java)
             startActivity(artistIntent)
         }
 
@@ -47,7 +47,7 @@ class timetableScreen : AppCompatActivity() {
         imageButton = findViewById(R.id.imageButton)
         imageButton.setOnClickListener{
             finish()
-            val imageIntent : Intent = Intent(applicationContext, imageScreen::class.java)
+            val imageIntent : Intent = Intent(applicationContext, ImageScreen::class.java)
             startActivity(imageIntent)
         }
     }

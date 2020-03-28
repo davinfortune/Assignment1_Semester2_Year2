@@ -3,20 +3,21 @@
     package="org.wit.festivalapp">
 
     <application
-        android:name="org.wit.placemark.main.mainApp"
+        android:name=".main.MainApp"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".location.locationScreen"/>
-        <activity android:name=".image.imageScreen" />
+        <activity android:name=".location.LocationScreen"/>
+        <activity android:name=".image.ImageScreen" />
         <activity android:name=".timetable.timetableScreen" />
-        <activity android:name=".artists.artistScreen" />
-        <activity android:name=".artists.artistDetails" />
+        <activity android:name=".artists.ArtistScreen" />
+        <activity android:name=".artists.ArtistDetails" />
         <activity android:name=".artists.ArtistModel" />
-        <activity android:name=".home.homeScreen">
+        <activity android:name=".artists.AddArtist" />
+        <activity android:name=".home.HomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

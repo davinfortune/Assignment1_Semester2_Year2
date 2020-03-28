@@ -1,24 +1,24 @@
-package org.wit.festivalapp.location
+package org.wit.festivalapp.artists
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import org.wit.festivalapp.R
-import org.wit.festivalapp.artists.artistScreen
-import org.wit.festivalapp.image.imageScreen
+import org.wit.festivalapp.image.ImageScreen
+import org.wit.festivalapp.location.LocationScreen
 import org.wit.festivalapp.timetable.timetableScreen
 
-class locationScreen : AppCompatActivity() {
+class ArtistDetails : AppCompatActivity() {
 
-    lateinit var artistButton: ImageView
-    lateinit var timetableButton : ImageView
     lateinit var imageButton : ImageView
+    lateinit var timetableButton : ImageView
+    lateinit var locationButton : ImageView
     lateinit var homeButton : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_location_screen)
+        setContentView(R.layout.activity_artist_details)
 
         /*Home Button*/
         homeButton = findViewById(R.id.homeButton)
@@ -34,19 +34,19 @@ class locationScreen : AppCompatActivity() {
             startActivity(timetableIntent)
         }
 
-        /*Artist Button*/
-        artistButton = findViewById(R.id.artistButton)
-        artistButton.setOnClickListener {
+        /*Location Button*/
+        locationButton = findViewById(R.id.locationButton)
+        locationButton.setOnClickListener {
             finish()
-            val artistIntent : Intent = Intent(applicationContext, artistScreen::class.java)
-            startActivity(artistIntent)
+            val locationIntent : Intent = Intent(applicationContext, LocationScreen::class.java)
+            startActivity(locationIntent)
         }
 
         /*Image Button*/
         imageButton = findViewById(R.id.imageButton)
         imageButton.setOnClickListener{
             finish()
-            val imageIntent : Intent = Intent(applicationContext, imageScreen::class.java)
+            val imageIntent : Intent = Intent(applicationContext, ImageScreen::class.java)
             startActivity(imageIntent)
         }
     }

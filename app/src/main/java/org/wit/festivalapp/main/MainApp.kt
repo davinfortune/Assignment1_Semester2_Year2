@@ -1,10 +1,13 @@
-package org.wit.placemark.main
+package org.wit.festivalapp.main
 
 import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.wit.festivalapp.artists.ArtistStore
 
-class mainApp : Application(), AnkoLogger {
+class MainApp : Application(), AnkoLogger {
+
+    val artistArray = ArtistStore()
 
     override fun onCreate() {
         super.onCreate()
