@@ -11,8 +11,6 @@ import org.jetbrains.anko.AnkoLogger
 import org.wit.festivalapp.R
 import org.wit.festivalapp.artists.ArtistDetails
 import org.wit.festivalapp.artists.ArtistScreen
-import org.wit.festivalapp.image.ImageScreen
-import org.wit.festivalapp.location.LocationScreen
 import org.wit.festivalapp.timetable.timetableScreen
 
 /**
@@ -28,8 +26,6 @@ class HomeScreen : AppCompatActivity(), AnkoLogger {
     //BUTTONS
     lateinit var artistButton: ImageView
     lateinit var timetableButton : ImageView
-    lateinit var imageButton : ImageView
-    lateinit var locationButton : ImageView
 
     //RIGHT ANIMATION
     lateinit var firstImage : ImageView
@@ -87,20 +83,6 @@ class HomeScreen : AppCompatActivity(), AnkoLogger {
             startActivity(timetableIntent)
         }
 
-        /*Image Button*/
-        imageButton = findViewById(R.id.imageButton)
-        imageButton.setOnClickListener{
-            val imageIntent : Intent = Intent(applicationContext, ImageScreen::class.java)
-            startActivity(imageIntent)
-        }
-
-
-        /*Location Button*/
-        locationButton = findViewById(R.id.locationButton)
-        locationButton.setOnClickListener {
-            val locationIntent : Intent = Intent(applicationContext, LocationScreen::class.java)
-            startActivity(locationIntent)
-        }
 
         /*Artist Button*/
         artistButton = findViewById(R.id.artistButton)

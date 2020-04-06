@@ -8,8 +8,8 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
-import org.wit.festivalapp.image.ImageScreen
-import org.wit.festivalapp.location.LocationScreen
+import org.wit.festivalapp.home.HomeScreen
+
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
 
@@ -32,31 +32,18 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
         homeButton = findViewById(R.id.homeButton)
         homeButton.setOnClickListener {
             finish()
+            val moveIntent : Intent = Intent(applicationContext, HomeScreen::class.java)
+            startActivity(moveIntent)
         }
 
         /*Timetable Button*/
         timetableButton = findViewById(R.id.timetableButton)
         timetableButton.setOnClickListener {
             finish()
+            finish()
             val timetableIntent : Intent = Intent(applicationContext, timetableScreen::class.java)
             startActivity(timetableIntent)
-        }
-
-        /*Location Button*/
-        locationButton = findViewById(R.id.locationButton)
-        locationButton.setOnClickListener {
-            finish()
-            val locationIntent : Intent = Intent(applicationContext, LocationScreen::class.java)
-            startActivity(locationIntent)
-        }
-
-        /*Image Button*/
-        imageButton = findViewById(R.id.imageButton)
-        imageButton.setOnClickListener{
-            finish()
-            val imageIntent : Intent = Intent(applicationContext, ImageScreen::class.java)
-            startActivity(imageIntent)
-        }
+    }
 
         //ADD CODE
         addButton.setOnClickListener(){
@@ -95,5 +82,9 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
             val artistScreen : Intent = Intent(applicationContext, ArtistScreen::class.java)
             startActivity(artistScreen.putExtra("add_artist", artist))
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
