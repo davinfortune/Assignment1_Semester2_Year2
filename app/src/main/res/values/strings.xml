@@ -18,4 +18,6 @@
     <string name="arena">Arena</string>
     <string name="genre">Genre</string>
     <string name="time">Time</string>
+    <string name="upload">Upload</string>
+    <string name="select_artist_image">Select an Artist Image</string>
 </resources>

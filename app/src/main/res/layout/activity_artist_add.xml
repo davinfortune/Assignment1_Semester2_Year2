@@ -103,8 +103,8 @@
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="200dp"
         android:text="Add"
         app:layout_constraintBottom_toTopOf="@+id/homeToolbar"
         app:layout_constraintStart_toStartOf="parent" />
@@ -132,5 +132,15 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/genreText" />
+
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/upload"
+        app:layout_constraintBottom_toTopOf="@+id/homeButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

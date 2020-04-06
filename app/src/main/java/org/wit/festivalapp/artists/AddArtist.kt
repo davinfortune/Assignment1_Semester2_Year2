@@ -9,6 +9,7 @@ import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
 import org.wit.festivalapp.home.HomeScreen
+import org.wit.festivalapp.helpers.showImagePicker
 
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
@@ -19,9 +20,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
 
     var app : MainApp? = null
 
-    lateinit var imageButton : ImageView
     lateinit var timetableButton : ImageView
-    lateinit var locationButton : ImageView
     lateinit var homeButton : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +43,13 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
             val timetableIntent : Intent = Intent(applicationContext, timetableScreen::class.java)
             startActivity(timetableIntent)
     }
+
+        val IMAGE_REQUEST = 1
+
+        uploadButton.setOnClickListener(){
+            showImagePicker(this, IMAGE_REQUEST)
+        }
+
 
         //ADD CODE
         addButton.setOnClickListener(){
