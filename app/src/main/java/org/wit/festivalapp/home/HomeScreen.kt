@@ -7,6 +7,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import org.jetbrains.anko.AnkoLogger
 import org.wit.festivalapp.R
 import org.wit.festivalapp.artists.ArtistDetails
@@ -90,6 +91,8 @@ class HomeScreen : AppCompatActivity(), AnkoLogger {
            val artistIntent : Intent = Intent(applicationContext, ArtistScreen::class.java)
             startActivity(artistIntent)
         }
+
+        Picasso.with(this).load("https://pbs.twimg.com/profile_images/1238276163136561152/-VppgNF1_400x400.jpg").into(secondImage)
     }
 
 

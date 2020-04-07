@@ -8,6 +8,7 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
+import org.wit.festivalapp.helpers.readImage
 import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.helpers.showImagePicker
 
@@ -17,6 +18,8 @@ import org.wit.festivalapp.timetable.timetableScreen
 class AddArtist : AppCompatActivity(), AnkoLogger {
 
     var artist = ArtistModel()
+
+    val IMAGE_REQUEST = 1
 
     var app : MainApp? = null
 
@@ -31,7 +34,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
         homeButton = findViewById(R.id.homeButton)
         homeButton.setOnClickListener {
             finish()
-            val moveIntent : Intent = Intent(applicationContext, HomeScreen::class.java)
+            val moveIntent: Intent = Intent(applicationContext, HomeScreen::class.java)
             startActivity(moveIntent)
         }
 
@@ -40,57 +43,67 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
         timetableButton.setOnClickListener {
             finish()
             finish()
-            val timetableIntent : Intent = Intent(applicationContext, timetableScreen::class.java)
+            val timetableIntent: Intent = Intent(applicationContext, timetableScreen::class.java)
             startActivity(timetableIntent)
-    }
+        }
 
-        val IMAGE_REQUEST = 1
 
-        uploadButton.setOnClickListener(){
+        uploadButton.setOnClickListener() {
             showImagePicker(this, IMAGE_REQUEST)
         }
 
 
         //ADD CODE
-        addButton.setOnClickListener(){
+        addButton.setOnClickListener() {
             artist.artistName = artistNameText.text.toString()
 
-            if(artist.artistName.isNotEmpty()){
+            if (artist.artistName.isNotEmpty()) {
 
-            }
-            else{
+            } else {
                 toast("Please Enter a Valid Name")
             }
 
             artist.artistArena = arenaText.text.toString()
-            if(artist.artistArena.isNotEmpty()){
+            if (artist.artistArena.isNotEmpty()) {
 
-            }
-            else{
+            } else {
                 toast("Please Enter a Valid Arena")
             }
 
             artist.artistGenre = genreText.text.toString()
-            if(artist.artistGenre.isNotEmpty()){
+            if (artist.artistGenre.isNotEmpty()) {
 
-            }
-            else{
+            } else {
                 toast("Please Enter a Valid Genre")
             }
 
-           artist.artistTime = timeText.text.toString()
-            if(artist.artistTime.isNotEmpty()){
+            artist.artistTime = timeText.text.toString()
+            if (artist.artistTime.isNotEmpty()) {
 
-            }
-            else{
+            } else {
                 toast("Please Enter a Valid Time")
             }
-            val artistScreen : Intent = Intent(applicationContext, ArtistScreen::class.java)
-            startActivity(artistScreen.putExtra("add_artist", artist))
+
+
+
+            if (artist.artistImage.isNotEmpty()) {
+                val artistScreen: Intent = Intent(applicationContext, ArtistScreen::class.java)
+                startActivity(artistScreen.putExtra("add_artist", artist))
+            } else {
+                toast("Please Upload an Image")
+            }
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            IMAGE_REQUEST -> {
+                if (data != null) {
+                    artist.artistImage = data.getData().toString()
+                    firstImage.setImageBitmap(readImage(this, resultCode, data))
+                }
+            }
+        }
     }
 }

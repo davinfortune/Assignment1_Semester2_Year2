@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import kotlinx.android.synthetic.main.activity_artist_add.*
 import kotlinx.android.synthetic.main.activity_artist_screen.*
+import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
@@ -15,7 +16,7 @@ import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
 
-class ArtistScreen : AppCompatActivity(), ArtistListener {
+class ArtistScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
 
     lateinit var app : MainApp
 
@@ -26,10 +27,22 @@ class ArtistScreen : AppCompatActivity(), ArtistListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_artist_screen)
         app = application as MainApp
+        if(app.artistArray.findAll().toString() == "[]") {
+            app.artistArray.create(
+                ArtistModel(
+                    0,
+                    "Westlife",
+                    "Heinken Tent",
+                    "Pop",
+                    "6:30",
+                    "https://i.pinimg.com/474x/a7/a1/68/a7a1684537e14e38d47e3d9b401dcf84.jpg"
+                )
+           )
+       }
 
         if(intent.hasExtra("add_artist")){
            var addArtist = intent.extras.getParcelable<ArtistModel>("add_artist")
-           app.artistArray.create(ArtistModel(0,addArtist.artistName,addArtist.artistArena,addArtist.artistGenre,addArtist.artistTime))
+           app.artistArray.create(ArtistModel(0,addArtist.artistName,addArtist.artistArena,addArtist.artistGenre,addArtist.artistTime,addArtist.artistImage))
         }
 
         /*Home Button*/

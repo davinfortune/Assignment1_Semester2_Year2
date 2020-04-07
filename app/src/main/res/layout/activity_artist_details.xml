@@ -60,12 +60,13 @@
         android:layout_marginBottom="150dp"
         android:contentDescription="TODO"
         android:maxHeight="175dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/homeToolbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintVertical_bias="0.254"
         app:srcCompat="@mipmap/ariana" />
 
     <TextView
@@ -109,9 +110,9 @@
 
     <TextView
         android:id="@+id/artistName"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="15dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/ariana_grande"
@@ -120,7 +121,7 @@
         app:layout_constraintBottom_toTopOf="@+id/time"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
+        app:layout_constraintVertical_bias="0.453" />
 
     <TextView
         android:id="@+id/timetableText"

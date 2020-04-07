@@ -4,9 +4,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.activity_artist_screen.view.*
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.artist_card.view.*
 import org.wit.festivalapp.R
+import org.wit.festivalapp.helpers.readImage
+import org.wit.festivalapp.helpers.readImageFromPath
 
 class ArtistAdapter constructor(private var artists: List<ArtistModel>,
                                    private val listener: ArtistListener) : RecyclerView.Adapter<ArtistAdapter.MainHolder>() {
@@ -25,8 +27,19 @@ class ArtistAdapter constructor(private var artists: List<ArtistModel>,
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(artist: ArtistModel,  listener : ArtistListener) {
-            itemView.artistName.text = artist.artistName
-            itemView.artistGenre.text = artist.artistGenre
+            itemView.artistName.text = (artist.artistName + ".")
+            itemView.artistGenre.text = (artist.artistGenre + ".")
+            if(artist.artistImage.contains("https://")) {
+                Picasso.with(itemView.context).load(artist.artistImage).into(itemView.imageView)
+            }
+            else {
+                itemView.imageView.setImageBitmap(
+                    readImageFromPath(
+                        itemView.context,
+                        artist.artistImage
+                    )
+                )
+            }
             itemView.setOnClickListener { listener.onArtistClick(artist) }
         }
     }

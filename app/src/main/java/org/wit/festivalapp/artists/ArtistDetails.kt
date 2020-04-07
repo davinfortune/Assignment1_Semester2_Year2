@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_artist_details.*
 import kotlinx.android.synthetic.main.artist_card.view.*
-import kotlinx.android.synthetic.main.artist_card.view.artistName
 import org.wit.festivalapp.R
+import org.wit.festivalapp.helpers.readImageFromPath
 import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
@@ -46,17 +47,26 @@ class ArtistDetails : AppCompatActivity() {
             var artistIn = intent.extras.getParcelable<ArtistModel>("details_artist")
 
             var name : TextView = findViewById(R.id.artistName)
-            name.text = artistIn.artistName
+            name.text = (artistIn.artistName + ".")
 
             var arena : TextView = findViewById(R.id.arenaName)
-            arena.text = artistIn.artistArena
+            arena.text = (artistIn.artistArena + ".")
 
             var genre : TextView = findViewById(R.id.genreName)
-            genre.text = artistIn.artistGenre
+            genre.text = (artistIn.artistGenre + ".")
 
             var time : TextView = findViewById(R.id.time)
-            time.text = artistIn.artistTime
+            time.text = (artistIn.artistTime + ".")
 
+            firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
+
+            if(artistIn.artistImage.contains("https://")) {
+                Picasso.with(this).load(artistIn.artistImage).into(firstImage)
+            }
+            else {
+                firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
+                
+            }
             var deleteArtist : ImageView = findViewById(R.id.deleteArtist)
             deleteArtist.setOnClickListener(){
                 app.artistArray.delete(artistIn)
