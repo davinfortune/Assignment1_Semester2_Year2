@@ -25,6 +25,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
 
     lateinit var timetableButton : ImageView
     lateinit var homeButton : ImageView
+    lateinit var artistScreen : Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,13 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
             val timetableIntent: Intent = Intent(applicationContext, timetableScreen::class.java)
             startActivity(timetableIntent)
         }
+
+        var artistButton : ImageView = findViewById(R.id.artistButton)
+        artistButton.setOnClickListener{
+            artistScreen = Intent(applicationContext, ArtistScreen::class.java)
+            startActivity(artistScreen)
+        }
+
 
 
         uploadButton.setOnClickListener() {
@@ -87,7 +95,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
 
 
             if (artist.artistImage.isNotEmpty()) {
-                val artistScreen: Intent = Intent(applicationContext, ArtistScreen::class.java)
+                artistScreen = Intent(applicationContext, ArtistScreen::class.java)
                 startActivity(artistScreen.putExtra("add_artist", artist))
             } else {
                 toast("Please Upload an Image")
