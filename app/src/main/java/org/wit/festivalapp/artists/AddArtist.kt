@@ -1,21 +1,25 @@
 package org.wit.festivalapp.artists
+
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Spinner
 import kotlinx.android.synthetic.main.activity_artist_add.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
 import org.wit.festivalapp.helpers.readImage
-import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.helpers.showImagePicker
-
+import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
 
-class AddArtist : AppCompatActivity(), AnkoLogger {
+
+class AddArtist : AppCompatActivity(), AnkoLogger  {
 
     var artist = ArtistModel()
 
@@ -60,6 +64,42 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
             showImagePicker(this, IMAGE_REQUEST)
         }
 
+        /** TAKEN FROM : https://developer.android.com/guide/topics/ui/controls/spinner **/
+        var spinner: Spinner = findViewById(R.id.arenaDropdown)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.arena_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+            spinner.adapter = adapter
+        }
+
+        spinner = findViewById(R.id.genreDropdown)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.genre_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+            spinner.adapter = adapter
+        }
+
+        spinner = findViewById(R.id.dayDropdown)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.day_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+            spinner.adapter = adapter
+        }
 
         //ADD CODE
         addButton.setOnClickListener() {
@@ -69,20 +109,21 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
 
             } else {
                 toast("Please Enter a Valid Name")
+                return@setOnClickListener
             }
 
-            artist.artistArena = arenaText.text.toString()
-            if (artist.artistArena.isNotEmpty()) {
 
-            } else {
+            artist.artistArena = arenaDropdown.selectedItem.toString()
+
+            if(artist.artistArena.contains("Arena"))
+            {
                 toast("Please Enter a Valid Arena")
+                return@setOnClickListener
             }
-
-            artist.artistGenre = genreText.text.toString()
-            if (artist.artistGenre.isNotEmpty()) {
-
-            } else {
+            artist.artistGenre = genreDropdown.selectedItem.toString()
+            if (artist.artistGenre.contains("Genre")) {
                 toast("Please Enter a Valid Genre")
+                return@setOnClickListener
             }
 
             artist.artistTime = timeText.text.toString()
@@ -90,8 +131,14 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
 
             } else {
                 toast("Please Enter a Valid Time")
+                return@setOnClickListener
             }
 
+            artist.artistDay = dayDropdown.selectedItem.toString()
+            if (artist.artistDay.contains("Day")){
+                toast("Please Enter a Valid Day")
+                return@setOnClickListener
+            }
 
 
             if (artist.artistImage.isNotEmpty()) {
@@ -99,6 +146,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger {
                 startActivity(artistScreen.putExtra("add_artist", artist))
             } else {
                 toast("Please Upload an Image")
+                return@setOnClickListener
             }
         }
     }

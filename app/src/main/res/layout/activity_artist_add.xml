@@ -6,6 +6,61 @@
     android:layout_height="match_parent"
     android:background="#C3E4F3">
 
+    <EditText
+        android:id="@+id/artistNameText"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:hint="@string/hint_Artist_Name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
+        android:text="Add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+    <EditText
+        android:id="@+id/timeText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/time"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dayDropdown" />
+
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/upload"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
+
+    <ImageView
+        android:id="@+id/firstImage"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/homeToolbar"
         android:layout_width="420dp"
@@ -17,16 +72,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/timetableButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginBottom="25dp"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="@+id/homeToolbar"
-        app:layout_constraintStart_toStartOf="@+id/homeToolbar"
-        app:srcCompat="@mipmap/timetableicon" />
+    <TextView
+        android:id="@+id/artistsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/artists"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/homeToolbar" />
+
+    <TextView
+        android:id="@+id/timetableText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/timetable"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/homeToolbar" />
 
     <ImageView
         android:id="@+id/artistButton"
@@ -38,6 +104,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/artisticon" />
+
+    <ImageView
+        android:id="@+id/timetableButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginBottom="25dp"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="@+id/homeToolbar"
+        app:layout_constraintStart_toStartOf="@+id/homeToolbar"
+        app:srcCompat="@mipmap/timetableicon" />
 
     <ImageView
         android:id="@+id/homeButton"
@@ -53,105 +130,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/logo" />
 
-    <TextView
-        android:id="@+id/timetableText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/timetable"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/homeToolbar" />
-
-    <TextView
-        android:id="@+id/artistsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="5dp"
-        android:text="@string/artists"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/homeToolbar" />
-
-    <EditText
-        android:id="@+id/artistNameText"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="70dp"
-        android:ems="10"
-        android:hint="@string/hint_Artist_Name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/arenaText"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:id="@+id/arenaDropdown"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/arena"
-        android:inputType="textPersonName"
+        android:hapticFeedbackEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/artistNameText" />
 
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="200dp"
-        android:text="Add"
-        app:layout_constraintBottom_toTopOf="@+id/homeToolbar"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/genreText"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:id="@+id/genreDropdown"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/genre"
-        android:inputType="textPersonName"
+        android:hapticFeedbackEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/arenaText" />
+        app:layout_constraintTop_toBottomOf="@+id/arenaDropdown" />
 
-    <EditText
-        android:id="@+id/timeText"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+    <Spinner
+        android:id="@+id/dayDropdown"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="@string/time"
-        android:inputType="textPersonName"
+        android:hapticFeedbackEnabled="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/genreText" />
-
-    <Button
-        android:id="@+id/uploadButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="100dp"
-        android:text="@string/upload"
-        app:layout_constraintBottom_toTopOf="@+id/homeButton"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/firstImage"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="56dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/homeButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:layout_constraintTop_toBottomOf="@+id/genreDropdown" />
 
 </android.support.constraint.ConstraintLayout>

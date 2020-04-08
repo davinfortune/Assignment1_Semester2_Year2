@@ -29,17 +29,9 @@ class ArtistAdapter constructor(private var artists: List<ArtistModel>,
         fun bind(artist: ArtistModel,  listener : ArtistListener) {
             itemView.artistName.text = (artist.artistName + ".")
             itemView.artistGenre.text = (artist.artistGenre + ".")
-            if(artist.artistImage.contains("https://")) {
+
                 Picasso.with(itemView.context).load(artist.artistImage).into(itemView.imageView)
-            }
-            else {
-                itemView.imageView.setImageBitmap(
-                    readImageFromPath(
-                        itemView.context,
-                        artist.artistImage
-                    )
-                )
-            }
+
             itemView.setOnClickListener { listener.onArtistClick(artist) }
         }
     }

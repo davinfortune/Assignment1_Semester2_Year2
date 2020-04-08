@@ -15,6 +15,7 @@ import org.wit.festivalapp.R
 import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
+import java.util.concurrent.ThreadLocalRandom
 
 class ArtistScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
 
@@ -27,52 +28,11 @@ class ArtistScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_artist_screen)
         app = application as MainApp
-        if(app.artistArray.findAll().toString() == "[]") {
-            app.artistArray.create(
-                    ArtistModel(
-                        0,
-                        "Westlife",
-                        "Heinken Tent",
-                        "Pop",
-                        "7:30",
-                        "https://i.pinimg.com/474x/a7/a1/68/a7a1684537e14e38d47e3d9b401dcf84.jpg"
-                    )
-                    )
-            app.artistArray.create(
-                ArtistModel(
-                    0,
-                    "Ariana Grande",
-                    "Main Stage",
-                    "Pop",
-                    "6:30",
-                    "https://www.hawtcelebs.com/wp-content/uploads/2016/04/ariana-grande-las-vegas-promos_6.jpg"
-                )
-            )
-            app.artistArray.create(
-                ArtistModel(
-                    0,
-                    "Jon Bellion",
-                    "Red Bull Arena",
-                    "Alternate",
-                    "5:30",
-                    "https://i0.wp.com/www.hypefresh.co/wp-content/uploads/2015/05/Jon-Bellion.jpg?fit=800%2C800&ssl=1"
-                )
-            )
-            app.artistArray.create(
-                ArtistModel(
-                    0,
-                    "Bazzi",
-                    "Social Tent",
-                    "Pop",
-                    "6:00",
-                    "https://pbs.twimg.com/profile_images/1238276163136561152/-VppgNF1_400x400.jpg"
-                )
-            )
-       }
+
 
         if(intent.hasExtra("add_artist")){
            var addArtist = intent.extras.getParcelable<ArtistModel>("add_artist")
-           app.artistArray.create(ArtistModel(0,addArtist.artistName,addArtist.artistArena,addArtist.artistGenre,addArtist.artistTime,addArtist.artistImage))
+           app.artistArray.create(ArtistModel(0,addArtist.artistName,addArtist.artistDay,addArtist.artistArena,addArtist.artistGenre,addArtist.artistTime,addArtist.artistImage))
         }
 
         /*Home Button*/

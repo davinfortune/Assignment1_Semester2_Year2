@@ -34,6 +34,9 @@ dependencies {
     /**DEPENDECY TAKEN FROM : https://www.youtube.com/watch?v=Tdb_WSEEZbQ**/
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
+    /**DEPENDECY TAKEN FROM : https://www.youtube.com/watch?v=ph_DFpNmoJE**/
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     implementation "com.google.code.gson:gson:2.8.5"
     implementation 'com.android.support:design:28.0.0'
     implementation 'org.jetbrains.anko:anko-commons:0.10.7'

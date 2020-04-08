@@ -10,17 +10,17 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="90dp"
         app:layout_constraintBottom_toTopOf="@+id/homeToolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/homeToolbar"
-        android:layout_width="420dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#C3E4F3"
         android:minHeight="?attr/actionBarSize"
@@ -57,11 +57,10 @@
         android:layout_height="53dp"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="133dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/todo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="@+id/homeToolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/logo" />
 
@@ -87,17 +86,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/homeToolbar" />
 
-    <Button
+    <ImageView
         android:id="@+id/addArtistButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="#C3E4F3"
-        android:text="Add Artist"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@mipmap/addicon" />
 
 </android.support.constraint.ConstraintLayout>

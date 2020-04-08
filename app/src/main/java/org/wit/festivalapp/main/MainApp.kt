@@ -9,6 +9,7 @@ import org.wit.festivalapp.artists.ArtistStore
 class MainApp : Application(), AnkoLogger {
 
     lateinit var artistArray : ArtistStore
+    var size : Int = 4
 
     override fun onCreate() {
         super.onCreate()

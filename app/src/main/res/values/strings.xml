@@ -20,4 +20,28 @@
     <string name="time">Time</string>
     <string name="upload">Upload</string>
     <string name="select_artist_image">Select an Artist Image</string>
+
+    <string-array name="arena_array">
+    <item>Arena</item>
+    <item>Main Stage</item>
+    <item>Heinken Tent</item>
+    <item>Social Tent</item>
+    <item>Techno Trailer</item>
+</string-array>
+
+    <string-array name="genre_array">
+    <item>Genre</item>
+    <item>Pop</item>
+    <item>Alternate</item>
+    <item>Rap</item>
+    <item>EDM</item>
+    <item>Techno</item>
+</string-array>
+
+    <string-array name="day_array">
+        <item>Day</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
 </resources>

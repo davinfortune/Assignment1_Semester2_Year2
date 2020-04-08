@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_artist_details.*
-import kotlinx.android.synthetic.main.artist_card.view.*
 import org.wit.festivalapp.R
 import org.wit.festivalapp.helpers.readImageFromPath
 import org.wit.festivalapp.home.HomeScreen
@@ -23,6 +22,7 @@ class ArtistDetails : AppCompatActivity() {
 
     lateinit var timetableButton : ImageView
     lateinit var homeButton : ImageView
+    lateinit var artistIn : ArtistModel
 
 
 
@@ -30,6 +30,8 @@ class ArtistDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_artist_details)
         app = application as MainApp
+
+
 
         /*Home Button*/
         homeButton = findViewById(R.id.homeButton)
@@ -54,49 +56,62 @@ class ArtistDetails : AppCompatActivity() {
         }
 
         if(intent.hasExtra("details_artist")){
-            var artistIn = intent.extras.getParcelable<ArtistModel>("details_artist")
+            artistIn = intent.extras.getParcelable<ArtistModel>("details_artist")
 
-            var name : TextView = findViewById(R.id.artistName)
-            name.text = (artistIn.artistName + ".")
-
-            var detailsAnimation : Animation = AnimationUtils.loadAnimation(this,R.anim.details_artist_name)
-            name.setAnimation(detailsAnimation)
-
-            var arena : TextView = findViewById(R.id.arenaName)
-            arena.text = (artistIn.artistArena + ".")
-
-            detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.details_artist_arena)
-            arena.setAnimation(detailsAnimation)
-
-            var genre : TextView = findViewById(R.id.genreName)
-            genre.text = (artistIn.artistGenre + ".")
-
-            detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.details_artist_genre)
-            genre.setAnimation(detailsAnimation)
-
-            var time : TextView = findViewById(R.id.time)
-            time.text = (artistIn.artistTime + ".")
-
-            detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.details_artist_time)
-            time.setAnimation(detailsAnimation)
-
-            detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.first_image_animation)
-            firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
-            firstImage.setAnimation(detailsAnimation)
-
-            if(artistIn.artistImage.contains("https://")) {
-                Picasso.with(this).load(artistIn.artistImage).into(firstImage)
-            }
-            else {
-                firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
-
-            }
             var deleteArtist : ImageView = findViewById(R.id.deleteArtist)
             deleteArtist.setOnClickListener(){
                 app.artistArray.delete(artistIn)
                 val artistIntent : Intent = Intent(applicationContext, ArtistScreen::class.java)
                 startActivity(artistIntent)
             }
+        }
+
+        if(intent.hasExtra("home_artist")){
+            artistIn = intent.extras.getParcelable<ArtistModel>("home_artist")
+
+            var deleteArtist : ImageView = findViewById(R.id.deleteArtist)
+            deleteArtist.setOnClickListener(){
+                app.artistArray.delete(artistIn)
+                val homeIntent : Intent = Intent(applicationContext, HomeScreen::class.java)
+                startActivity(homeIntent)
+            }
+        }
+
+        var name : TextView = findViewById(R.id.artistName)
+        name.text = (artistIn.artistName + ".")
+
+        var detailsAnimation : Animation = AnimationUtils.loadAnimation(this,R.anim.details_artist_name)
+        name.setAnimation(detailsAnimation)
+
+        var arena : TextView = findViewById(R.id.arenaName)
+        arena.text = (artistIn.artistArena + ".")
+
+        detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.details_artist_arena)
+        arena.setAnimation(detailsAnimation)
+
+        var genre : TextView = findViewById(R.id.genreName)
+        genre.text = (artistIn.artistGenre + ".")
+
+        detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.details_artist_genre)
+        genre.setAnimation(detailsAnimation)
+
+        var time : TextView = findViewById(R.id.time)
+        time.text = (artistIn.artistDay + ".")
+
+
+        detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.details_artist_time)
+        time.setAnimation(detailsAnimation)
+
+        detailsAnimation = AnimationUtils.loadAnimation(this,R.anim.first_image_animation)
+        firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
+        firstImage.setAnimation(detailsAnimation)
+
+        if(artistIn.artistImage.contains("https://")) {
+            Picasso.with(this).load(artistIn.artistImage).into(firstImage)
+        }
+        else {
+            firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
+
         }
     }
 }
