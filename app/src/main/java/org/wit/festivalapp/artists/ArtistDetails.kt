@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_artist_details.*
 import org.wit.festivalapp.R
+import org.wit.festivalapp.artists.store.ArtistModel
 import org.wit.festivalapp.helpers.readImageFromPath
 import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.main.MainApp
@@ -77,6 +78,11 @@ class ArtistDetails : AppCompatActivity() {
             }
         }
 
+        updateButton.setOnClickListener{
+            var updateScreen : Intent = Intent(applicationContext, UpdateArtist::class.java)
+            startActivity(updateScreen.putExtra("update_artist", artistIn))
+        }
+
         var name : TextView = findViewById(R.id.artistName)
         name.text = (artistIn.artistName + ".")
 
@@ -106,12 +112,7 @@ class ArtistDetails : AppCompatActivity() {
         firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
         firstImage.setAnimation(detailsAnimation)
 
-        if(artistIn.artistImage.contains("https://")) {
             Picasso.with(this).load(artistIn.artistImage).into(firstImage)
-        }
-        else {
-            firstImage.setImageBitmap(readImageFromPath(this, artistIn.artistImage))
 
-        }
     }
 }

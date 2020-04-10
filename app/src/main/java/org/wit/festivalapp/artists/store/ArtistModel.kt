@@ -1,4 +1,4 @@
-package org.wit.festivalapp.artists
+package org.wit.festivalapp.artists.store
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

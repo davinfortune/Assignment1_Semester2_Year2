@@ -4,20 +4,19 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.Button
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_artist_add.*
 import kotlinx.android.synthetic.main.activity_artist_screen.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
+import org.wit.festivalapp.artists.interfaces.ArtistListener
+import org.wit.festivalapp.artists.store.ArtistModel
+import org.wit.festivalapp.artists.recycler.ArtistAdapter
 import org.wit.festivalapp.home.HomeScreen
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
-import java.util.concurrent.ThreadLocalRandom
 
-class ArtistScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
+class ArtistScreen : AppCompatActivity(),
+    ArtistListener, AnkoLogger {
 
     lateinit var app : MainApp
 
@@ -32,7 +31,31 @@ class ArtistScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
 
         if(intent.hasExtra("add_artist")){
            var addArtist = intent.extras.getParcelable<ArtistModel>("add_artist")
-           app.artistArray.create(ArtistModel(0,addArtist.artistName,addArtist.artistDay,addArtist.artistArena,addArtist.artistGenre,addArtist.artistTime,addArtist.artistImage))
+           app.artistArray.create(
+               ArtistModel(
+                   0,
+                   addArtist.artistName,
+                   addArtist.artistDay,
+                   addArtist.artistArena,
+                   addArtist.artistGenre,
+                   addArtist.artistTime,
+                   addArtist.artistImage
+               )
+           )
+        }
+
+        if(intent.hasExtra("updated_artist")){
+            var tempArtist = intent.extras.getParcelable<ArtistModel>("updated_artist")
+            var looper : Int = app.artistArray.findAll().size
+            for (i in 0..(looper-1)){
+                if(app.artistArray.findAll()[i].artistId == tempArtist.artistId){
+                    app.artistArray.findAll()[i].artistArena = tempArtist.artistArena
+                    app.artistArray.findAll()[i].artistGenre = tempArtist.artistGenre
+                    app.artistArray.findAll()[i].artistDay = tempArtist.artistDay
+                    app.artistArray.findAll()[i].artistTime = tempArtist.artistTime
+                    app.artistArray.findAll()[i].artistImage = tempArtist.artistImage
+                }
+            }
         }
 
         /*Home Button*/
@@ -71,7 +94,8 @@ class ArtistScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
     }
 
     fun showArtists (artists : List<ArtistModel>){
-        recyclerView.adapter = ArtistAdapter(artists, this)
+        recyclerView.adapter =
+            ArtistAdapter(artists, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
 }

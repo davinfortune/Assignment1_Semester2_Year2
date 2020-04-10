@@ -3,17 +3,18 @@ package org.wit.festivalapp.main
 import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.wit.festivalapp.artists.ArtistJSONStore
-import org.wit.festivalapp.artists.ArtistStore
+import org.wit.festivalapp.artists.store.ArtistJSONStore
+import org.wit.festivalapp.artists.interfaces.ArtistStore
 
 class MainApp : Application(), AnkoLogger {
 
     lateinit var artistArray : ArtistStore
-    var size : Int = 4
+    var day : Int = 0
 
     override fun onCreate() {
         super.onCreate()
-        artistArray = ArtistJSONStore(applicationContext)
+        artistArray =
+            ArtistJSONStore(applicationContext)
         info("App started")
     }
 }

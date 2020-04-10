@@ -3,8 +3,6 @@ package org.wit.festivalapp.artists
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
@@ -12,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_artist_add.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
+import org.wit.festivalapp.artists.store.ArtistModel
 import org.wit.festivalapp.helpers.readImage
 import org.wit.festivalapp.helpers.showImagePicker
 import org.wit.festivalapp.home.HomeScreen
@@ -25,7 +24,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger  {
 
     val IMAGE_REQUEST = 1
 
-    var app : MainApp? = null
+    lateinit var app : MainApp
 
     lateinit var timetableButton : ImageView
     lateinit var homeButton : ImageView
@@ -34,6 +33,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_artist_add)
+        app = application as MainApp
 
         /*Home Button*/
         homeButton = findViewById(R.id.homeButton)
@@ -60,7 +60,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger  {
 
 
 
-        uploadButton.setOnClickListener() {
+        uploadButton.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
         }
 
@@ -102,7 +102,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger  {
         }
 
         //ADD CODE
-        addButton.setOnClickListener() {
+        addButton.setOnClickListener {
             artist.artistName = artistNameText.text.toString()
 
             if (artist.artistName.isNotEmpty()) {
@@ -141,6 +141,21 @@ class AddArtist : AppCompatActivity(), AnkoLogger  {
             }
 
 
+
+            var looper : Int = app.artistArray.findAll().size
+            for (i in 0 until (looper-1)){
+                if(app.artistArray.findAll()[i].artistName == artist.artistName){
+                    toast("Artist Already Exists")
+                    return@setOnClickListener
+                }
+
+                if(app.artistArray.findAll()[i].artistArena == artist.artistArena && app.artistArray.findAll()[i].artistDay == artist.artistDay && app.artistArray.findAll()[i].artistTime == artist.artistTime){
+                    var name : String = app.artistArray.findAll()[i].artistName
+                    toast("That Arena is Already Taken at that Time by $name")
+                    return@setOnClickListener
+                }
+            }
+
             if (artist.artistImage.isNotEmpty()) {
                 artistScreen = Intent(applicationContext, ArtistScreen::class.java)
                 startActivity(artistScreen.putExtra("add_artist", artist))
@@ -156,7 +171,7 @@ class AddArtist : AppCompatActivity(), AnkoLogger  {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 if (data != null) {
-                    artist.artistImage = data.getData().toString()
+                    artist.artistImage = data.data.toString()
                     firstImage.setImageBitmap(readImage(this, resultCode, data))
                 }
             }

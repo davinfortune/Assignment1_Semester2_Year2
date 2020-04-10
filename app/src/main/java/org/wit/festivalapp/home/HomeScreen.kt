@@ -10,14 +10,12 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
 import org.wit.festivalapp.artists.ArtistDetails
-import org.wit.festivalapp.artists.ArtistModel
+import org.wit.festivalapp.artists.store.ArtistModel
 import org.wit.festivalapp.artists.ArtistScreen
 import org.wit.festivalapp.main.MainApp
 import org.wit.festivalapp.timetable.timetableScreen
-import java.util.concurrent.ThreadLocalRandom
 
 /**
 Created By : Davin Fortune

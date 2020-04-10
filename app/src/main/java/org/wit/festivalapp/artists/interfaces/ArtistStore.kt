@@ -1,4 +1,6 @@
-package org.wit.festivalapp.artists
+package org.wit.festivalapp.artists.interfaces
+
+import org.wit.festivalapp.artists.store.ArtistModel
 
 interface ArtistStore {
     fun findAll(): List<ArtistModel>

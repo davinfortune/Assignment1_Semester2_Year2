@@ -27,6 +27,7 @@
     <item>Heinken Tent</item>
     <item>Social Tent</item>
     <item>Techno Trailer</item>
+        <item>Red Bull Arena</item>
 </string-array>
 
     <string-array name="genre_array">

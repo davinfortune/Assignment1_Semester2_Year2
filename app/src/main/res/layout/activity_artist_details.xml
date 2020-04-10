@@ -155,4 +155,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/clipart1120803" />
 
+    <ImageView
+        android:id="@+id/updateButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/homeButton"
+        app:layout_constraintEnd_toStartOf="@+id/deleteArtist"
+        app:srcCompat="@mipmap/updateicon" />
+
 </android.support.constraint.ConstraintLayout>

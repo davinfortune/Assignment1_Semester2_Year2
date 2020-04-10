@@ -1,10 +1,11 @@
-package org.wit.festivalapp.artists
+package org.wit.festivalapp.artists.store
 
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
+import org.wit.festivalapp.artists.interfaces.ArtistStore
 import org.wit.placemark.helpers.exists
 import org.wit.placemark.helpers.read
 import org.wit.placemark.helpers.write
@@ -50,12 +51,18 @@ class ArtistJSONStore :  ArtistStore, AnkoLogger {
     }
 
     private fun serialize() {
-        val jsonString = gsonBuilder.toJson(artists, listType)
+        val jsonString = gsonBuilder.toJson(artists,
+            listType
+        )
         write(context, JSON_FILE, jsonString)
     }
 
     private fun deserialize() {
-        val jsonString = read(context, JSON_FILE)
-        artists = Gson().fromJson(jsonString, listType)
+        val jsonString = read(context,
+            JSON_FILE
+        )
+        artists = Gson().fromJson(jsonString,
+            listType
+        )
     }
 }

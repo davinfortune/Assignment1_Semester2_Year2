@@ -1,4 +1,4 @@
-package org.wit.festivalapp.artists
+package org.wit.festivalapp.artists.recycler
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.artist_card.view.*
 import org.wit.festivalapp.R
-import org.wit.festivalapp.helpers.readImage
-import org.wit.festivalapp.helpers.readImageFromPath
+import org.wit.festivalapp.artists.interfaces.ArtistListener
+import org.wit.festivalapp.artists.store.ArtistModel
 
 class ArtistAdapter constructor(private var artists: List<ArtistModel>,
-                                   private val listener: ArtistListener) : RecyclerView.Adapter<ArtistAdapter.MainHolder>() {
+                                private val listener: ArtistListener
+) : RecyclerView.Adapter<ArtistAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        return MainHolder(LayoutInflater.from(parent.context).inflate(R.layout.artist_card, parent, false))
+        return MainHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.artist_card, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
@@ -26,11 +29,11 @@ class ArtistAdapter constructor(private var artists: List<ArtistModel>,
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(artist: ArtistModel,  listener : ArtistListener) {
+        fun bind(artist: ArtistModel, listener : ArtistListener) {
             itemView.artistName.text = (artist.artistName + ".")
             itemView.artistGenre.text = (artist.artistGenre + ".")
 
-                Picasso.with(itemView.context).load(artist.artistImage).into(itemView.imageView)
+            Picasso.with(itemView.context).load(artist.artistImage).into(itemView.imageView)
 
             itemView.setOnClickListener { listener.onArtistClick(artist) }
         }

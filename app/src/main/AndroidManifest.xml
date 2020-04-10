@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+         <activity android:name=".artists.UpdateArtist" />
         <activity android:name=".timetable.timetableScreen" />
         <activity android:name=".artists.ArtistScreen" />
         <activity android:name=".artists.ArtistDetails" />
-        <activity android:name=".artists.ArtistModel" />
+        <activity android:name=".artists.store.ArtistModel" />
         <activity android:name=".artists.AddArtist" />
         <activity android:name=".home.HomeScreen">
             <intent-filter>
