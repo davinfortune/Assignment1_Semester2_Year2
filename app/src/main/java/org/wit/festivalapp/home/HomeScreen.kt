@@ -62,7 +62,7 @@ class HomeScreen : AppCompatActivity(), AnkoLogger {
                     0,
                     "Westlife",
                     "Friday",
-                    "Heinken Tent",
+                    "Heineken Tent",
                     "Pop",
                     "7:30",
                     "https://i.pinimg.com/474x/a7/a1/68/a7a1684537e14e38d47e3d9b401dcf84.jpg"
@@ -106,7 +106,7 @@ class HomeScreen : AppCompatActivity(), AnkoLogger {
                     0,
                     "Joyner Lucas",
                     "Saturday",
-                    "Heniken Tent",
+                    "Heineken Tent",
                     "Rap",
                     "10:00",
                     "https://res-3.cloudinary.com/dostuff-media/image/upload//c_fill,g_faces,f_auto,w_800/v1512617497/event-poster-8824217.jpg"

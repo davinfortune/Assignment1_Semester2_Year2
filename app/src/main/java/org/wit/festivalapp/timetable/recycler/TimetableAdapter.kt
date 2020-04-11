@@ -1,4 +1,4 @@
-package org.wit.festivalapp.timetable.recyler
+package org.wit.festivalapp.timetable.recycler
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.timetable_card.view.*
 import org.wit.festivalapp.R
-import org.wit.festivalapp.artists.interfaces.ArtistListener
 import org.wit.festivalapp.artists.store.ArtistModel
-import org.wit.festivalapp.timetable.app
+import org.wit.festivalapp.timetable.interfaces.TimeListener
 
 class TimetableAdapter constructor(private var artists: List<ArtistModel>,
-                                private val listener: ArtistListener
+                                private val listener: TimeListener
 ) : RecyclerView.Adapter<TimetableAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -29,13 +28,14 @@ class TimetableAdapter constructor(private var artists: List<ArtistModel>,
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(artist: ArtistModel, listener : ArtistListener) {
+        fun bind(artist: ArtistModel, listener : TimeListener) {
 
-                itemView.artistName.text = (artist.artistName + ".")
-                itemView.timeTable.text = (artist.artistTime + ".")
+            itemView.artistName.text = (artist.artistName + ".")
+            itemView.timeTable.text = (artist.artistTime + ".")
+            itemView.day.text = (artist.artistDay + ".")
 
 
-            itemView.setOnClickListener { listener.onArtistClick(artist) }
+            itemView.setOnClickListener { listener.onTimeClick(artist) }
         }
     }
 }

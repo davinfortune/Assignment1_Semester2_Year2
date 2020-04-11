@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+         <activity android:name=".timetable.TimetableDetails"/>
          <activity android:name=".artists.UpdateArtist" />
         <activity android:name=".timetable.timetableScreen" />
         <activity android:name=".artists.ArtistScreen" />

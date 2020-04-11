@@ -10,21 +10,19 @@ import kotlinx.android.synthetic.main.activity_artist_screen.homeButton
 import kotlinx.android.synthetic.main.activity_timetable_screen.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.jetbrains.anko.toast
 import org.wit.festivalapp.R
 import org.wit.festivalapp.artists.ArtistScreen
-import org.wit.festivalapp.artists.interfaces.ArtistListener
 import org.wit.festivalapp.artists.store.ArtistModel
 import org.wit.festivalapp.main.MainApp
-import org.wit.festivalapp.timetable.TimetableDetails.TimetableDetails
-import org.wit.festivalapp.timetable.recyler.TimetableAdapter
+import org.wit.festivalapp.timetable.interfaces.TimeListener
+import org.wit.festivalapp.timetable.recycler.TimetableAdapter
 
 lateinit var artistButtont: ImageView
 lateinit var homeButtont : ImageView
 lateinit var app : MainApp
 
-/** SCROLL VIEW TAKEN FROM = https://stackoverflow.com/questions/3058164/android-scrolling-an-imageview **/
-class timetableScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
+class timetableScreen : AppCompatActivity(),
+    TimeListener, AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,7 +111,7 @@ class timetableScreen : AppCompatActivity(), ArtistListener, AnkoLogger {
         recyclerViewTimetable.adapter?.notifyDataSetChanged()
     }
 
-    override fun onArtistClick(artist: ArtistModel) {
+    override fun onTimeClick(artist: ArtistModel) {
         var detailsScreen : Intent = Intent(applicationContext, TimetableDetails::class.java)
         startActivity(detailsScreen.putExtra("timetable_artist", artist))
     }
