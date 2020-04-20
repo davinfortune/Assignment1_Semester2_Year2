@@ -24,6 +24,7 @@ Start Date : 09/03/2020
 
 Tutorials Used :
 https://www.youtube.com/watch?v=E4QBMxsIA5U
+https://www.youtube.com/watch?v=JLIFqqnSNmg
  **/
 
 class HomeScreen : AppCompatActivity(), AnkoLogger {
